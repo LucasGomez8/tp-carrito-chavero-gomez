@@ -21,11 +21,11 @@ namespace carrito
             productList = cc.listarProducto();
         }
 
-        protected void AgregarCarrito_Click(object sender, EventArgs e)
+        protected void AgregarCarrito_Click(object sender, EventArgs e, string e)
         {
             CommerceConnecction cc = new CommerceConnecction();
 
-            lblPru.Text = txtNombre.Text;
+         
 
             //Response.Redirect("Carrito?id=" + idProducto, false);
         }
