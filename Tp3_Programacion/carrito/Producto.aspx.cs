@@ -13,10 +13,17 @@ namespace carrito
     {
 
         public List<Product> productList { get; set; }
+        public List<Product> enCarrito { get; set; }
+        public Product aniadido { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
             productList = cc.listarProducto();
+        }
+
+        protected void AgregarCarrito_Click(object sender, EventArgs e)
+        {
+            CommerceConnecction cc = new CommerceConnecction();
         }
     }
 }
