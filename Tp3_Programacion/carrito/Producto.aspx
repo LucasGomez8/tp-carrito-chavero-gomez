@@ -15,7 +15,7 @@
             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
             <div style="display:flex; flex-direction:row; justify-content:space-around">
                 <p><%=item.Precio %></p>
-                <asp:Button runat="server" ID="btnAgregarCarrito" onClick="AgregarCarrito_Click(<%#Eval(txtNombre) %>)" Text="+"/>
+                <asp:Button runat="server" ID="btnAgregarCarrito" onClick="AgregarCarrito_Click" Text="+" />
             </div>
         </div>
                 

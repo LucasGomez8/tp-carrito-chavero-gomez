@@ -21,7 +21,7 @@ namespace carrito
             productList = cc.listarProducto();
         }
 
-        protected void AgregarCarrito_Click(object sender, EventArgs e, string e)
+        protected void AgregarCarrito_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
 
