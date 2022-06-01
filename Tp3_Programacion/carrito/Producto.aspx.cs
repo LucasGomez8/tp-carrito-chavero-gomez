@@ -14,7 +14,7 @@ namespace carrito
 
         public List<Product> productList { get; set; }
         public List<Product> enCarrito { get; set; }
-        public Product aniadido { get; set; }
+        public Product buscado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
@@ -24,6 +24,10 @@ namespace carrito
         protected void AgregarCarrito_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
+
+            lblPru.Text = txtNombre.Text;
+
+            //Response.Redirect("Carrito?id=" + idProducto, false);
         }
     }
 }
