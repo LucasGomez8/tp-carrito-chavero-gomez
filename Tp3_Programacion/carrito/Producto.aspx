@@ -7,7 +7,8 @@
        <% foreach (domain.Product item in productList)
            {
                txtNombre.Text = item.Nombre;
-                //comentario para que aparezca
+               int i = 0;
+               //comentario para que aparezca
                %>
         <div style="height: 400px; width: 300px; margin:10px auto; text-align:center">
             <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />
@@ -15,12 +16,15 @@
             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
             <div style="display:flex; flex-direction:row; justify-content:space-around">
                 <p><%=item.Precio %></p>
-                <asp:Button runat="server" ID="btnAgregarCarrito" onClick="AgregarCarrito_Click" Text="+" />
+                <%--<asp:Button runat="server" ID="btnAgregarCarrito" onClick="AgregarCarrito_Click" Text="+" />--%>
+                <a href="Carrito?pID=<%=item.codArticulo%>">
+                       +
+                </a>
             </div>
         </div>
                 
 
        <%
-           } %>
+               i++; } %>
     </div>
 </asp:Content>
