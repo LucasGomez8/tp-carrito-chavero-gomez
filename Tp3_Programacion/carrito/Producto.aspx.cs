@@ -9,25 +9,41 @@ using services;
 
 namespace carrito
 {
-    public partial class Producto : System.Web.UI.Page
+    public partial class Producto : Page
     {
 
         public List<Product> productList { get; set; }
-        public List<Product> enCarrito { get; set; }
+        public List<Product> enCarrito;
         public Product buscado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
             productList = cc.listarProducto();
+
+            if (Request.Form["__EVENTTARGET"] == "OnClickAddProduct")
+            {
+                string id = Request.Form["__EVENTARGUMENT"];
+                AgregarCarrito(id);
+            }
         }
 
-        protected void AgregarCarrito_Click(object sender, EventArgs e)
+        protected void AgregarCarrito(string id)
         {
-            CommerceConnecction cc = new CommerceConnecction();
+            enCarrito = Session["enCarrito"] != null ? (List<Product>)Session["enCarrito"] : new List<Product>();
 
-         
+            enCarrito.Add(findProductById(Int32.Parse(id)));
+            Session.Add("enCarrito", enCarrito);
 
-            //Response.Redirect("Carrito?id=" + idProducto, false);
+            lblPru.Text = "Button Clicked" + id;            
+        }
+
+        private Product findProductById(int id)
+        {
+            foreach (Product item in productList)
+            {
+                if (item.Id == id) return item;
+            }
+            return null; 
         }
     }
 }
