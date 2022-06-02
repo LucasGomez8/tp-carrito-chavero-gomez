@@ -12,7 +12,6 @@
         <asp:Label runat="server" ID="lblPru"></asp:Label>
        <% foreach (domain.Product item in productList)
            {
-               txtNombre.Text = item.Nombre;
                %>
         <div style="height: 400px; width: 300px; margin:10px auto; text-align:center">
             <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />

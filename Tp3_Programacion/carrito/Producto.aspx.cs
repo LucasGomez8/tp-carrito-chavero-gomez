@@ -14,7 +14,6 @@ namespace carrito
 
         public List<Product> productList { get; set; }
         public List<Product> enCarrito;
-        public Product buscado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
