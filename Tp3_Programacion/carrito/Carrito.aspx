@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Carrito" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Carrito.aspx.cs" Inherits="carrito.Carrito" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
-       <div style="display:flex; flex-wrap:wrap; align-items:center">
+    <div class="container">
         <asp:Label runat="server" ID="lblPru"></asp:Label>
        <% 
            if (filtered !=null)
@@ -9,9 +9,20 @@
 
            foreach (domain.Cart item in filtered)
            {
-               txtNombre.Text = item.Nombre;
                //comentario para que aparezca
                %>
+             <div class="row">
+                 <div class="col-md-4">
+                     <div style="display: flex; flex-direction:column; justify-content: center; text-align:center">
+                         <img class="img-responsive" src="<%=item.Added.urlImagen %>" alt="Alternate Text" />
+                         <h1><%=item.Added.Nombre %></h1>
+                     </div>
+                 </div>
+                 <div class="col-md-4">
+                     <p>Cantidad: <%=item.Quantity %></p>
+                 </div>
+
+             </div>
        <%-- <div style="height: 400px; width: 300px; margin:10px auto; text-align:center">
             <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />
             <h1 id="nombreProducto"><%=item.Nombre %></h1>
@@ -25,11 +36,12 @@
         </div>--%>
 
 
+
                 
 
        <%
            } 
            
            }%>
-    </div>
+        </div>
 </asp:Content>

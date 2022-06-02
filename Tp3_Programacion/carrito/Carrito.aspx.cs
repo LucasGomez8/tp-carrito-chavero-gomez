@@ -13,23 +13,41 @@ namespace carrito
     {
         public List<Product> added { get; set; }
         public List<Cart> filtered { get; set; }
+
+        public Carrito()
+        {
+            filtered = new List<Cart>();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             added = (List<Product>)Session["enCarrito"];
-            reducer(added);
+            if (added != null)
+            {
+                reducer(added);
+            }
         }
 
-        public void reducer(List<Product> added)
+        public void reducer(List<Product> x)
         {
-          Cart toFill = new Cart();
-            foreach (Product item in added.Distinct())
+            List<Cart> aux = new List<Cart>();
+            Cart toFill = new Cart();
+
+
+            foreach (Product item in x.Distinct())
             {
                 toFill.Id = item.Id;
                 toFill.Added = item;
-                toFill.Quantity = added.Count(x => x == item);
+                toFill.Quantity = x.Count(q => q.codArticulo == item.codArticulo);
+                aux.Add(toFill);
             }
 
-          filtered.Add(toFill);
+            var group = aux.Distinct();
+            foreach (var item in group)
+            {
+                filtered.Add(item);
+            }
+
+
         }
     }
 }
