@@ -13,7 +13,7 @@ namespace carrito
     {
 
         public List<Product> productList { get; set; }
-        public List<Product> enCarrito;
+        public List<Cart> enCarrito;
         protected void Page_Load(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
@@ -28,12 +28,19 @@ namespace carrito
 
         protected void AgregarCarrito(string id)
         {
-            enCarrito = Session["enCarrito"] != null ? (List<Product>)Session["enCarrito"] : new List<Product>();
+            enCarrito = Session["enCarrito"] != null 
+                ? (List<Cart>)Session["enCarrito"] 
+                : new List<Cart>();
 
-            enCarrito.Add(findProductById(Int32.Parse(id)));
+            Product product = findProductById(Int32.Parse(id));
+            if (product == null) return;
+
+            Cart cart = checkProductOnCart(product);
+            enCarrito.Remove(cart);
+            cart.Quantity++;
+
+            enCarrito.Add(cart);
             Session.Add("enCarrito", enCarrito);
-
-            lblPru.Text = "Button Clicked" + id;            
         }
 
         private Product findProductById(int id)
@@ -43,6 +50,18 @@ namespace carrito
                 if (item.Id == id) return item;
             }
             return null; 
+        }
+
+        private Cart checkProductOnCart(Product product)
+        {
+            foreach (Cart item in enCarrito)
+            {
+                if (item.Product.Id == product.Id)
+                {
+                    return item;
+                }
+            }
+            return new Cart(product, 0);
         }
     }
 }

@@ -17,7 +17,7 @@
             <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />
             <h1 id="nombreProducto"><%=item.Nombre %></h1>
             <div style="display:flex; flex-direction:row; justify-content:space-around">
-                <p><%=item.Precio %></p>
+                <p><%=Math.Round(item.Precio) %></p>
                 <button onclick="OnClickAddProduct(<%=item.Id.ToString()%>)" >
                        +
                 </button>
