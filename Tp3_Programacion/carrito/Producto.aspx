@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Producto.aspx.cs" Inherits="carrito.Producto" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="css/Producto.css" rel="stylesheet" text="text/css"/>
     <script>
         function OnClickAddProduct(id) {
             __doPostBack("OnClickAddProduct", id);
