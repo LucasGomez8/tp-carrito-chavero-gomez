@@ -8,19 +8,23 @@
         }
     </script>
 
-    <div style="display:flex; flex-wrap:wrap; align-items:center">
+    <div class="row" style="margin-top: 10px;">
         <asp:Label runat="server" ID="lblPru"></asp:Label>
        <% foreach (domain.Product item in productList)
            {
                %>
-        <div style="height: 400px; width: 300px; margin:10px auto; text-align:center">
-            <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />
-            <h1 id="nombreProducto"><%=item.Nombre %></h1>
-            <div style="display:flex; flex-direction:row; justify-content:space-around">
-                <p><%=Math.Round(item.Precio) %></p>
-                <button onclick="OnClickAddProduct(<%=item.Id.ToString()%>)" >
-                       +
-                </button>
+        <div class="col-md-4">
+            <div class="product__content">
+                <div class="product-content__head">
+                    <img class="img-responsive" src="<%=item.urlImagen %>" alt="Alternate Text" />
+                    <h1 id="nombreProducto"><%=item.Nombre %></h1>
+                </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-around">
+                    <p style="font-size: 15px;">$<%=Math.Round(item.Precio) %></p>
+                    <button style="display:inline-block; height: 30px;"onclick="OnClickAddProduct(<%=item.Id.ToString()%>)" >
+                           +
+                    </button>
+                </div>
             </div>
         </div>
                 
